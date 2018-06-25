@@ -1,0 +1,10 @@
+#sloganSection {
+    height: 230px;
+    background-image: url(src/img/jumbotron.jpg);
+    background-size: cover;
+    background-position: 0% 35%;
+}
+
+.product {
+    width: 348px;
+}
