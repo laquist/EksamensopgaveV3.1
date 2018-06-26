@@ -5,6 +5,14 @@
     background-position: 0% 35%;
 }
 
+#sloganSection p {
+    font-size: 1.2rem;
+}
+
+#products {
+    margin-top: 80px;
+}
+
 .product {
     width: 348px;
 }
