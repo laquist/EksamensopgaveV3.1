@@ -16,3 +16,12 @@
 .product {
     width: 348px;
 }
+
+#orderCount {
+    font-size: 1.2rem;
+}
+
+#payButton {
+    font-size: 1.25rem;
+    background-color: #268e7a;
+}

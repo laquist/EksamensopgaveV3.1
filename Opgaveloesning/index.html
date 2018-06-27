@@ -1,8 +1,14 @@
 <!-- TODO -->
 <!-- 
+    Lav bestillingsdelen
+    Fix derefter at bestilling wrapper ned under kafferne (col-sm col-md osv)
+    
+    Smide HTML5 tags ind diverse steder
     Bedre navn til Image & Slogan comment 
     Fixe Slogan/Jumbotron billedet.
+   
     
+    col- col-sm- col-md- col-lg- col-xl
 -->
 
 <!DOCTYPE html>
@@ -24,9 +30,11 @@
     <!-- Top/Header -->
     <header>
         <div class="container pt-3 pb-3">
-            <div class="d-flex">
-                <img src="src/img/logo.bmp" alt="DUMB STARBUCKS COFFEE Logo" class="d-inline-block">
-                <div>
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-3 col-lg-2 col-xl-2 text-center">
+                    <img src="src/img/logo.bmp" alt="DUMB STARBUCKS COFFEE Logo" class="d-inline-block">
+                </div>
+                <div class="col-12 col-sm-12 col-md-9 col-lg-10 col-xl-10">
                     <h1 class="display-4 m-0"><strong><small>DUMB</small></strong></h1>
                     <h1 class="display-4 m-0">STARBUCKS COFFEE</h1>
                 </div>
@@ -47,83 +55,146 @@
         </div>
     </section>
 
-    <!-- Products/Cards Content -->
+    <!-- Products and Shopping Cart Content -->
     <section id="products">
         <div class="container">
             
             <div class="row">
+                
+                <!-- Products -->
                 <div class="col-8 d-flex justify-content-between flex-wrap">
                     
-                    <div class="card product d-inline-block mb-4">
-                        <img class="card-img-top" src="src/img/Americano.jpg" alt="Americano">
-                        <div class="card-body">
-                            <h5 class="card-title">Americano</h5>
-                            <p class="card-text">Stærk crema espresso med varmt vand.</p>
-                            <a href="#" class="btn btn-primary">Bestil</a>
+                    <article>
+                        <div class="card product d-inline-block mb-4">
+                            <img class="card-img-top" src="src/img/Americano.jpg" alt="Americano">
+                            <div class="card-body">
+                                <h5 class="card-title">Americano</h5>
+                                <p class="card-text">Stærk crema espresso med varmt vand.</p>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <a href="#" class="btn btn-outline-dark">Bestil</a>
+                                        <p class="float-right m-0">60kr</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </article>
             
-                    <div class="card product d-inline-block mb-4" >
-                        <img class="card-img-top" src="src/img/Caffe_Latte.jpg" alt="Caffe Latte">
-                        <div class="card-body">
-                            <h5 class="card-title">Caffe Latte</h5>
-                            <p class="card-text">Espresso med skummet varm mælk.</p>
-                            <a href="#" class="btn btn-primary">Bestil</a>
+                    <article>
+                        <div class="card product d-inline-block mb-4" >
+                            <img class="card-img-top" src="src/img/Caffe_Latte.jpg" alt="Caffe Latte">
+                            <div class="card-body">
+                                <h5 class="card-title">Caffe Latte</h5>
+                                <p class="card-text">Espresso med skummet varm mælk.</p>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <a href="#" class="btn btn-outline-dark">Bestil</a>
+                                        <p class="float-right m-0">65kr</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </article>
             
-                    <div class="card product d-inline-block mb-4">
-                        <img class="card-img-top" src="src/img/Cappuccino.jpg" alt="Cappuccino">
-                        <div class="card-body">
-                            <h5 class="card-title">Cappuccino</h5>
-                            <p class="card-text">Espresso med dampet mælk og skum.</p>
-                            <a href="#" class="btn btn-primary">Bestil</a>
+                    <article>
+                        <div class="card product d-inline-block mb-4">
+                            <img class="card-img-top" src="src/img/Cappuccino.jpg" alt="Cappuccino">
+                            <div class="card-body">
+                                <h5 class="card-title">Cappuccino</h5>
+                                <p class="card-text">Espresso med dampet mælk og skum.</p>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <a href="#" class="btn btn-outline-dark">Bestil</a>
+                                        <p class="float-right m-0">75kr</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </article>
         
-                    <div class="card product d-inline-block mb-4">
-                        <img class="card-img-top" src="src/img/Espresso.jpg" alt="Espresso">
-                        <div class="card-body">
-                            <h5 class="card-title">Espresso</h5>
-                            <p class="card-text">Espresso lavet af vores dygtigste baristaer.</p>
-                            <a href="#" class="btn btn-primary">Bestil</a>
+                    <article>
+                        <div class="card product d-inline-block mb-4">
+                            <img class="card-img-top" src="src/img/Espresso.jpg" alt="Espresso">
+                            <div class="card-body">
+                                <h5 class="card-title">Espresso</h5>
+                                <p class="card-text">Espresso lavet af vores dygtigste baristaer.</p>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <a href="#" class="btn btn-outline-dark">Bestil</a>
+                                        <p class="float-right m-0">50kr</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </article>
         
-                    <div class="card product d-inline-block mb-4">
-                        <img class="card-img-top" src="src/img/Macchiato.jpg" alt="Macchiato">
-                        <div class="card-body">
-                            <h5 class="card-title">Macchiato</h5>
-                            <p class="card-text">Lækker espressodrik med skummet mælk og chokolade.</p>
-                            <a href="#" class="btn btn-primary">Bestil</a>
+                    <article>
+                        <div class="card product d-inline-block mb-4">
+                            <img class="card-img-top" src="src/img/Macchiato.jpg" alt="Macchiato">
+                            <div class="card-body">
+                                <h5 class="card-title">Macchiato</h5>
+                                <p class="card-text">Lækker espressodrik med skummet mælk og chokolade.</p>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <a href="#" class="btn btn-outline-dark">Bestil</a>
+                                        <p class="float-right m-0">100kr</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </article>
 
                 </div>
 
-                <div class="col-4 d-flex flex-wrap">
+                <!-- Sidebar with orders/shopping cart -->
+                <aside class="col-4">
                     <div>
-                        <h4 class="text-secondary">Bestilling</h4>
-                        <ul>
-                            <li>Americano</li>
-                            <li>Macchiato</li>
-                            <li>Total (DKK)</li>
-                        </ul>
+
+                        <div class="row">
+                            <div class="col-10">
+                                <h4 class="text-secondary">Bestilling</h4>
+                            </div>
+                            <div class="col-2">
+                                <p id="orderCount" class="bg-secondary text-white font-weight-bold text-center rounded-circle">2</p>
+                            </div>
+                        </div>
+
+
+                        <div class="container border rounded">
+                            <div class="row border-bottom p-1">
+                                <div class="col-12 my-2">
+                                    <p class="d-inline-block m-0"><strong>Americano</strong></p>
+                                    <p class="float-right m-0">60kr</p>
+                                </div>
+                            </div>
+
+                            <div class="row border-bottom p-1">
+                                <div class="col-12 my-2">
+                                    <p class="d-inline-block m-0"><strong>Macchiato</strong></p>
+                                    <p class="float-right m-0">100kr</p>
+                                </div>
+                            </div>
+
+                            <div class="row p-1">
+                                <div class="col-12 my-2">
+                                    <p class="d-inline-block m-0">Total (DKK)</p>
+                                    <p class="float-right m-0"><strong>160kr</strong></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button id="payButton" type="button" class="btn w-100 mt-3 text-white p-2">Gå til betaling</button>
+
+
                     </div>
-                </div>
+                </aside>
+
             </div>
-
-
-
 
 
         </div>
     </section>
 
-    <!-- Sidebar with orders/shopping cart -->
-    <aside class="">
-
-    </aside>
 
 
 
