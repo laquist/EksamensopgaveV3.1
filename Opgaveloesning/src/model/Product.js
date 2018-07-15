@@ -1,11 +1,15 @@
 class Product {
 
     constructor(newProductObject) {
-        this.id = newProductObject.id;
-        this.name = newProductObject.name;
-        this.description = newProductObject.description;
-        this.price = newProductObject.price;
-        this.image = newProductObject.image;
+        // this.id = newProductObject.id;
+        // this.name = newProductObject.name;
+        // this.description = newProductObject.description;
+        // this.price = newProductObject.price;
+        // this.image = newProductObject.image;
+        this.navn = newProductObject.navn;
+        this.beskrivelse = newProductObject.beskrivelse;
+        this.pris = newProductObject.pris;
+        this.img = newProductObject.img;
     };
 
     //createTestData() – Skal sætte data ind i en Product.instances og kalde funktionen saveAll()
@@ -13,13 +17,14 @@ class Product {
     //loadlAll() – Hvis der findes data i localStorage eller sessionStorage skal denne data loades ind i Product.instances, ellers skal test data oprettes for så at loades ind i Product.instances. 
 
 
-    createTestData() {
-        let dataString = "";
-        let dataObj = {};
-        let dataKeys = [];
-        let dataKey = "";
+    static createTestData() {
+        var dataSource = {};
+        var dataString = "";
+        var dataJsonObj = {};
+        var dataKeys = [];
+        var dataKey = "";
 
-        dataObj = {
+        dataSource = {
             "coffee1": {
                 "navn" : "Americano",
                 "beskrivelse" : "Stærk crema espresso med varmt vand",
@@ -50,25 +55,34 @@ class Product {
                 "pris" : "100kr",
                 "img" : "Macchiato.jpg"
             }
-        }
+        };
 
-        console.log(typeof(dataString));
+        //For at kunne JSON.parse, skulle det være en string, og jeg kunne ikke finde en måde at sætte dataen som string. Det er noget i formatet, som gjorde jeg ikke bare kunne sætte quotes omkring. Så nu har jeg et objekt med raw data, som jeg står stringify'er
+        dataString = JSON.stringify(dataSource);
 
-        // dataObj = JSON.parse(dataString);
+        dataJsonObj = JSON.parse(dataString);
 
-        dataKeys = Object.keys(dataObj);
+        dataKeys = Object.keys(dataJsonObj);
 
         for (let i=0; i < dataKeys.length; i++) {
             dataKey = dataKeys[i];
-            Product.Instances[dataKey] = new Product(dataObj[dataKey]);
+            Product.Instances[dataKey] = new Product(dataJsonObj[dataKey]);
+
+            //Temp - log the new product
+            // console.log(Product.Instances[dataKey]);
         };
 
-        console.log(Product.Instances);
-        // console.log(dataString);
+        console.log("Length: " + Object.keys(Product.Instances).length);
+        
+        
+        // console.log("DataObj:");
+        // console.log(dataJsonObj);
 
-        // var test123 = Object.keys(dataString);
-        // console.log("test123:: ::: : :");
-        // console.log(test123);
+        // console.log("DataKeys");
+        // console.log(dataKeys);
+
+        // console.log("Test DataObj");
+        // console.log(dataJsonObj.coffee1);
 
     };
 
