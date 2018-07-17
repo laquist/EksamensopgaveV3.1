@@ -18,11 +18,12 @@ class Product {
 
 
     static createTestData() {
-        var dataSource = {};
-        var dataString = "";
-        var dataJsonObj = {};
-        var dataKeys = [];
-        var dataKey = "";
+        let dataSource = {};
+        
+        let dataString = "";
+        let dataJsonObj = {};
+        let dataKeys = [];
+        let dataKey = "";
 
         dataSource = {
             "coffee1": {
@@ -57,44 +58,89 @@ class Product {
             }
         };
 
-        //For at kunne JSON.parse, skulle det være en string, og jeg kunne ikke finde en måde at sætte dataen som string. Det er noget i formatet, som gjorde jeg ikke bare kunne sætte quotes omkring. Så nu har jeg et objekt med raw data, som jeg står stringify'er
+        //Bruger JSON.stringify for at lave det om fra et JS object til en string i JSON format
         dataString = JSON.stringify(dataSource);
 
+        //Fra JSON string format til Object
         dataJsonObj = JSON.parse(dataString);
 
+        //Navnene af de properties der er i objectet. Så i dette tilfælde er det de key's der findes i vores key/value liste/map af instances
         dataKeys = Object.keys(dataJsonObj);
 
+        //Laver object (Product), og gemmer derefter det object i Product.Instances (og gentager...)
         for (let i=0; i < dataKeys.length; i++) {
             dataKey = dataKeys[i];
             Product.Instances[dataKey] = new Product(dataJsonObj[dataKey]);
-
-            //Temp - log the new product
-            // console.log(Product.Instances[dataKey]);
         };
 
-        console.log("Length: " + Object.keys(Product.Instances).length);
-        
-        
-        // console.log("DataObj:");
-        // console.log(dataJsonObj);
-
-        // console.log("DataKeys");
-        // console.log(dataKeys);
-
-        // console.log("Test DataObj");
-        // console.log(dataJsonObj.coffee1);
-
+        Product.saveAll();
     };
 
-    saveAll() {
+    static saveAll() {
+        let valueString = "";
+        let error = false;
 
+        try {
+            valueString = JSON.stringify(Product.Instances);
+            sessionStorage.setItem('Products', valueString);
+        }
+        catch (e) {
+            alert("Error when writing to sessionStorage\n" + e);
+            error = true;
+        }
+
+        if (!error) {
+            console.log("Successfully saved to sessionStorage");
+        }
+        else {
+            console.log("Error when saving to sessionStorage\n" + e);
+        }
     };
 
-    loadAll() {
+    static loadAll() {
+        let valueString = "";
 
+        let dataJsonObj = {};
+        let dataKeys = [];
+        let dataKey = "";
+
+        try {
+            if (sessionStorage.getItem('Products')) {
+                valueString = sessionStorage.getItem('Products');
+            }
+        }
+        catch (e) {
+            alert("Error when reading from sessionStorage\n" + e);
+        }
+
+        if (valueString) {
+            dataJsonObj = JSON.parse(valueString);
+
+            console.log("DataJsonObj: ");
+            console.log(dataJsonObj);
+
+            dataKeys = Object.keys(dataJsonObj);
+            
+            for (let i=0; i < dataKeys.length; i++) {
+                dataKey = dataKeys[i];
+                Product.Instances[dataKey] = new Product(dataJsonObj[dataKey]);
+            };
+
+            console.log(dataKeys.length + " items loaded from sessionStorage!");
+        }
+        else {
+            console.log("No matching data found in sessionStorage");
+
+            console.log("Creating testdata!");
+            Product.createTestData();
+        }
     };
+
+    static testMethod() {
+
+    }
 };
 
 
 //Product.instances property, hvor alle produkter ligger i et object.
-Product.Instances = [];
+Product.Instances = {};
