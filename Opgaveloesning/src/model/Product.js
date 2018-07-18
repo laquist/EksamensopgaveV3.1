@@ -1,21 +1,11 @@
 class Product {
 
     constructor(newProductObject) {
-        // this.id = newProductObject.id;
-        // this.name = newProductObject.name;
-        // this.description = newProductObject.description;
-        // this.price = newProductObject.price;
-        // this.image = newProductObject.image;
         this.navn = newProductObject.navn;
         this.beskrivelse = newProductObject.beskrivelse;
         this.pris = newProductObject.pris;
         this.img = newProductObject.img;
     };
-
-    //createTestData() – Skal sætte data ind i en Product.instances og kalde funktionen saveAll()
-    //saveAll() – Skal gemme Product.instances til localStorage eller sessionStorage.
-    //loadlAll() – Hvis der findes data i localStorage eller sessionStorage skal denne data loades ind i Product.instances, ellers skal test data oprettes for så at loades ind i Product.instances. 
-
 
     static createTestData() {
         let dataSource = {};
@@ -135,10 +125,6 @@ class Product {
             Product.createTestData();
         }
     };
-
-    static testMethod() {
-
-    }
 };
 
 
