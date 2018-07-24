@@ -128,5 +128,9 @@ class Product {
 };
 
 
+//Skal Product.Instances erklæres udenfor klassen? (Så vidt jeg kan se, så ja. Se følgende)
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
+// Static class-side properties and prototype data properties must be defined outside of the 
+
 //Product.instances property, hvor alle produkter ligger i et object.
 Product.Instances = {};
