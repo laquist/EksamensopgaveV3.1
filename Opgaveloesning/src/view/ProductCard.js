@@ -23,14 +23,14 @@ class ProductCard {
         var newCardString = `
         <article class="col-12 col-sm-12 com-md-6 col-lg-6 col-xl-6">
             <div class="card product mb-4 mx-auto">
-                <img class="card-img-top" src="src/img/{productImg}" alt="{productName}">
+                <img class="card-img-top" src="src/img/${productImg}" alt="${productName}">
                 <div class="card-body">
-                    <h5 class="card-title">{productName}</h5>
-                    <p class="card-text">{productDescription}</p>
+                    <h5 class="card-title">${productName}</h5>
+                    <p class="card-text">${productDescription}</p>
                     <div class="row">
                         <div class="col-12">
                             <button type="button" class="btn btn-outline-dark btnBestil">Bestil</button>
-                            <p class="float-right m-0">{productPrice}</p>
+                            <p class="float-right m-0">${productPrice}</p>
                         </div>
                     </div>
                 </div>
@@ -39,42 +39,9 @@ class ProductCard {
         `;
 
         var pathElement = document.getElementById('productCardContainer');
-
-        // var newCardTextNode = document.createTextNode(newCardString);
         
-        pathElement.appendChild(newCardTextNode);
+        pathElement.innerHTML += newCardString;
     
-
-
-        //Brug denne metode til at oprette og indsætte et nyt <article tag>,
-
-        // var element = document.getElementById("insertHere");
-        // var newElement = document.createElement("article");
-        // var myText = document.createTextNode("This is hopefully inside the article tag");
-
-        // element.appendChild(newElement);
-
-        // newElement.appendChild(myText);
-
-
-        //Dette er en kopi af hvordan det ser ud i HTML, så det skal flettes sammen med det Product/Card man vil create
-        
-        // <article class="col-12 col-sm-12 com-md-6 col-lg-6 col-xl-6">
-        //     <div class="card product mb-4 mx-auto">
-        //         <img class="card-img-top" src="src/img/Americano.jpg" alt="Americano">
-        //         <div class="card-body">
-        //             <h5 class="card-title">Americano</h5>
-        //             <p class="card-text">Stærk crema espresso med varmt vand.</p>
-        //             <div class="row">
-        //                 <div class="col-12">
-        //                     <!-- <a href="#" class="btn btn-outline-dark">Bestil</a> -->
-        //                     <button type="button" class="btn btn-outline-dark btnBestil">Bestil</button>
-        //                     <p class="float-right m-0">60kr</p>
-        //                 </div>
-        //             </div>
-        //         </div>
-        //     </div>
-        // </article>
     };
 
     clickHandler() {
