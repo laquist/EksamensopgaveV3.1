@@ -23,7 +23,7 @@ class Product {
                 "img" : "Americano.jpg"
             },
             "coffee2": {
-                "navn" : "Caffe latte",
+                "navn" : "Caffe Latte",
                 "beskrivelse" : "Espresso med skummet varm mælk",
                 "pris" : "65kr",
                 "img" : "Caffe_Latte.jpg"
@@ -32,7 +32,7 @@ class Product {
                 "navn" : "Cappuccino",
                 "beskrivelse" : "Espresso med dampet mælk og skum",
                 "pris" : "75kr",
-                "img" : "Cappucino.jpg"
+                "img" : "Cappuccino.jpg"
             },
             "coffee4": {
                 "navn" : "Espresso",
@@ -105,9 +105,6 @@ class Product {
 
         if (valueString) {
             dataJsonObj = JSON.parse(valueString);
-
-            console.log("DataJsonObj: ");
-            console.log(dataJsonObj);
 
             dataKeys = Object.keys(dataJsonObj);
             

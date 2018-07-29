@@ -29,7 +29,7 @@ class ProductCard {
                     <p class="card-text">${productDescription}</p>
                     <div class="row">
                         <div class="col-12">
-                            <button type="button" class="btn btn-outline-dark btnBestil">Bestil</button>
+                            <button id="${productName}" type="button" class="btn btn-outline-dark btnBestil">Bestil</button>
                             <p class="float-right m-0">${productPrice}</p>
                         </div>
                     </div>
@@ -44,20 +44,62 @@ class ProductCard {
     
     };
 
-    clickHandler() {
+    static clickHandler(productID) {
+        // console.log("clickHandler is clicked!! :)");
+
+        // cart.push(objParamereterHer?);
+
+        
+        var objKeys = Object.keys(Product.Instances);
+        var productToAdd = null;
+        
+        for (let i = 0; i < objKeys.length; i++) {
+            var objKey = objKeys[i];
+
+            if (Product.Instances[objKey].navn === productID) {
+                productToAdd = Product.Instances[objKey];
+                console.log("Found the product to add!");
+                console.log(Product.Instances[objKey].navn);
+            }
+        }
+        
+        if (productToAdd) {
+            cart.push(productToAdd);
+
+            cartSum += parseFloat(productToAdd.pris);
+            console.log("Product added to cart!");
+        }
+        else {
+            console.log("productToAdd was empty. Could not add to cart");
+        }
 
     };
 
-    setupUserInterface() {
+    static setupUserInterface() {
+        //Loads all products from sessionStorage and saving to Product.Instances, or if empty, creating testdata and saving to Product.Instances
+        Product.loadAll();
 
+        var i = 0;
+        var objKeys = Object.keys(Product.Instances);
+
+        for (i = 0; i < objKeys.length; i++) {
+            var objKey = objKeys[i];
+            ProductCard.createProductCard(Product.Instances[objKey]);
+        }
+        
+        console.log(i + " ProductCards created.");
     };
 };
 
+//Calls the loadAll method, and create for ProductCard for each product
+window.addEventListener("onload", ProductCard.setupUserInterface());
 
-
-
-
-
-// *****************
-// Har lavet alle knapperne på produkterne om til buttons i stedet for <a> tags og givet alle Bestil knapperne på produkterne, class'en btnBestil
-// Til at kunne sætte en event listener på om de bliver trykket på
+//Lytter til alle click's på hele siden, og så kører en function for kun at gøre noget hvis det er en af Bestil knapperne som bliver clicked
+window.addEventListener("click", 
+    function (event) {
+        if (event.target.classList.contains("btnBestil")) {  
+            ProductCard.clickHandler(event.target.id);
+        }
+    },
+    false
+);
