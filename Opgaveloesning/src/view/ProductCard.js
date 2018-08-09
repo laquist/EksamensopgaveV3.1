@@ -44,15 +44,11 @@ class ProductCard {
     
     };
 
-    static clickHandler(productID) {
-        // console.log("clickHandler is clicked!! :)");
-
-        // cart.push(objParamereterHer?);
-
-        
+    static clickHandler(productID) {     
         var objKeys = Object.keys(Product.Instances);
         var productToAdd = null;
         
+        //Søger efter produktet i Product.Instances (ud fra button ID)
         for (let i = 0; i < objKeys.length; i++) {
             var objKey = objKeys[i];
 
@@ -63,11 +59,47 @@ class ProductCard {
             }
         }
         
+        //Hvis produktet er fundet, så tilføjer den til cart (Array), og opdaterer cartSum
         if (productToAdd) {
             cart.push(productToAdd);
 
             cartSum += parseFloat(productToAdd.pris);
             console.log("Product added to cart!");
+
+            //Opdaterer DOM
+            var newCartItemString = `
+            <div class="row border-bottom p-1">
+                <div class="col-12 my-2">
+                    <p class="d-inline-block m-0"><strong>${productToAdd.navn}</strong></p>
+                    <p class="float-right m-0">${productToAdd.pris}</p>
+                </div>
+            </div>
+            `;
+            
+            var cartSumElement = document.getElementById('cartSum');
+            var cartSumParentElement = cartSumElement.parentNode;
+            //Helpernode er der for at man kan bruge .insertBefore. Den skal have en node, og det vil ikke virke med en rå HTML String. Så skal du lave den rå html string manuelt, ved at createElement for alle tags, og manuelt give de tags classes osv.
+            //Så helperNode er bare et temp element
+            var helperNode = document.createElement('div');
+            helperNode.innerHTML = newCartItemString;
+
+            while (helperNode.firstChild) {
+                cartSumParentElement.insertBefore(helperNode.firstChild, cartSumElement);
+            };
+
+            //Opdaterer prisen
+            var cartSumText = document.getElementById('cartSumText');
+            cartSumText.innerHTML = "<strong>" + cartSum + "kr</strong>";
+
+            //Opdaterer orderCount tallet oppe i toppen af Cart
+            var orderCountElement = document.getElementById('orderCount');
+            orderCountElement.innerHTML = cart.length;
+
+            //Gør payButton aktiv
+            document.getElementById('payButton').disabled = false;
+
+            //Gemmer til sessionStorage
+            cartSaveAll();
         }
         else {
             console.log("productToAdd was empty. Could not add to cart");
@@ -88,6 +120,14 @@ class ProductCard {
         }
         
         console.log(i + " ProductCards created.");
+
+        //Loads Cart from sessionStorage
+        cartLoadAll();
+
+        //Hvis Cart er tom, så skal 'Gå til betaling' være inaktiv
+        if (cart.length <= 0) {
+            document.getElementById('payButton').disabled = true;
+        }
     };
 };
 
